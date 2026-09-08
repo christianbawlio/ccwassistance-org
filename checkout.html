@@ -99,6 +99,66 @@
               </ul>
             </div>
 
+            <!-- Optional Add-on: Advanced Module ($39) -->
+            <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl border-2 border-green-200 p-6 relative overflow-hidden">
+              <div class="absolute top-0 right-0 bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">OPTIONAL ADD-ON</div>
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 pt-1">
+                  <input type="checkbox" id="bump-advanced" name="bump_advanced" class="w-5 h-5 text-green-600 border-gray-300 rounded focus:ring-green-500 cursor-pointer">
+                </div>
+                <div>
+                  <label for="bump-advanced" class="cursor-pointer">
+                    <h3 class="font-bold text-lg mb-1">Add Advanced Defensive Tactics Module</h3>
+                    <p class="text-gray-600 text-sm mb-3">Extra self-paced video module covering advanced defensive shooting fundamentals, drills, and scenario training.</p>
+                    <div class="flex items-baseline gap-2">
+                      <span class="text-2xl font-extrabold text-green-600">$39.00</span>
+                      <span class="text-gray-500">one-time</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Optional Add-on: Coaching Call ($55) -->
+            <div class="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-xl border-2 border-indigo-200 p-6 relative overflow-hidden">
+              <div class="absolute top-0 right-0 bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">OPTIONAL ADD-ON</div>
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 pt-1">
+                  <input type="checkbox" id="bump-coaching" name="bump_coaching" class="w-5 h-5 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500 cursor-pointer">
+                </div>
+                <div>
+                  <label for="bump-coaching" class="cursor-pointer">
+                    <h3 class="font-bold text-lg mb-1">Add 1-on-1 Instructor Coaching Call</h3>
+                    <p class="text-gray-600 text-sm mb-3">A live one-on-one video session with a certified instructor to review your questions and personalize your training plan.</p>
+                    <div class="flex items-baseline gap-2">
+                      <span class="text-2xl font-extrabold text-indigo-600">$55.00</span>
+                      <span class="text-gray-500">one-time</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Optional Add-on: Bundle ($69) -->
+            <div class="bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl border-2 border-amber-200 p-6 relative overflow-hidden">
+              <div class="absolute top-0 right-0 bg-amber-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">OPTIONAL ADD-ON</div>
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 pt-1">
+                  <input type="checkbox" id="bump-bundle" name="bump_bundle" class="w-5 h-5 text-amber-600 border-gray-300 rounded focus:ring-amber-500 cursor-pointer">
+                </div>
+                <div>
+                  <label for="bump-bundle" class="cursor-pointer">
+                    <h3 class="font-bold text-lg mb-1">Add Complete Concealed Carry Bundle</h3>
+                    <p class="text-gray-600 text-sm mb-3">Printable course workbook, range drills pack, and priority email support for everything you learn.</p>
+                    <div class="flex items-baseline gap-2">
+                      <span class="text-2xl font-extrabold text-amber-600">$69.00</span>
+                      <span class="text-gray-500">one-time</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </div>
+
             <!-- Payment -->
             <div class="bg-white rounded-xl border border-gray-200 p-6">
               <div class="flex items-center justify-between mb-4">
@@ -180,6 +240,30 @@
                 </div>
                 <p class="font-semibold">$95.00</p>
               </div>
+
+              <div id="bump-advanced-line" class="hidden justify-between items-start">
+                <div>
+                  <p class="font-medium">Advanced Defensive Tactics Module</p>
+                  <p class="text-sm text-gray-500">One-time</p>
+                </div>
+                <p class="font-semibold">$39.00</p>
+              </div>
+
+              <div id="bump-coaching-line" class="hidden justify-between items-start">
+                <div>
+                  <p class="font-medium">1-on-1 Instructor Coaching Call</p>
+                  <p class="text-sm text-gray-500">One-time</p>
+                </div>
+                <p class="font-semibold">$55.00</p>
+              </div>
+
+              <div id="bump-bundle-line" class="hidden justify-between items-start">
+                <div>
+                  <p class="font-medium">Complete Concealed Carry Bundle</p>
+                  <p class="text-sm text-gray-500">One-time</p>
+                </div>
+                <p class="font-semibold">$69.00</p>
+              </div>
             </div>
 
             <div class="border-t border-gray-100 pt-4 space-y-2">
@@ -243,6 +327,29 @@
 
   <script src="/js/main.js"></script>
   <script>
+    // Pricing (all one-time)
+    const BASE = 95.00, ADVANCED = 39.00, COACHING = 55.00, BUNDLE = 69.00;
+    const subtotalEl = document.getElementById('subtotal');
+    const totalEl = document.getElementById('total');
+    const bumps = [
+      { cb: document.getElementById('bump-advanced'), line: document.getElementById('bump-advanced-line'), amt: ADVANCED },
+      { cb: document.getElementById('bump-coaching'), line: document.getElementById('bump-coaching-line'), amt: COACHING },
+      { cb: document.getElementById('bump-bundle'),   line: document.getElementById('bump-bundle-line'),   amt: BUNDLE },
+    ];
+    const money = n => '$' + n.toFixed(2);
+    function show(el, on) {
+      if (on) { el.classList.remove('hidden'); el.classList.add('flex'); }
+      else { el.classList.add('hidden'); el.classList.remove('flex'); }
+    }
+    function recalc() {
+      let total = BASE;
+      bumps.forEach(b => { if (b.cb.checked) total += b.amt; show(b.line, b.cb.checked); });
+      subtotalEl.textContent = money(total);
+      totalEl.textContent = money(total);
+    }
+    bumps.forEach(b => b.cb.addEventListener('change', recalc));
+    recalc();
+
     // Placeholder payment behavior
     document.getElementById('checkout-form').addEventListener('submit', function(e) {
       e.preventDefault();
