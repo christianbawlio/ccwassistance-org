@@ -99,7 +99,7 @@
               </ul>
             </div>
 
-            <!-- Optional Add-on: Advanced Module ($39) -->
+            <!-- Optional Add-on: Advanced Defensive Tactics Module ($39.99/mo subscription) -->
             <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl border-2 border-green-200 p-6 relative overflow-hidden">
               <div class="absolute top-0 right-0 bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">OPTIONAL ADD-ON</div>
               <div class="flex gap-4">
@@ -109,13 +109,34 @@
                 <div>
                   <label for="bump-advanced" class="cursor-pointer">
                     <h3 class="font-bold text-lg mb-1">Add Advanced Defensive Tactics Module</h3>
-                    <p class="text-gray-600 text-sm mb-3">Extra self-paced video module covering advanced defensive shooting fundamentals, drills, and scenario training.</p>
+                    <p class="text-gray-600 text-sm mb-3">Ongoing access to advanced defensive shooting modules, new drills, and scenario training added every month.</p>
                     <div class="flex items-baseline gap-2">
-                      <span class="text-2xl font-extrabold text-green-600">$39.00</span>
-                      <span class="text-gray-500">one-time</span>
+                      <span class="text-2xl font-extrabold text-green-600">$39.99</span>
+                      <span class="text-gray-500">per month</span>
                     </div>
                   </label>
+                  <!-- ROSCA Required: Clear and conspicuous disclosure of material terms -->
+                  <div class="mt-3 bg-white rounded-lg border border-green-200 p-3 text-xs text-gray-600 leading-relaxed">
+                    <p class="font-semibold text-gray-800 mb-1">Subscription Terms:</p>
+                    <ul class="list-disc pl-4 space-y-1">
+                      <li><strong>Recurring charge:</strong> You will be charged <strong>$39.99 per month</strong>, billed automatically to the payment method you provide.</li>
+                      <li><strong>First charge:</strong> Your first payment of $39.99 will be charged today along with your one-time course purchase.</li>
+                      <li><strong>Auto-renewal:</strong> This subscription <strong>automatically renews each month</strong> until you cancel. Each renewal will charge $39.99 to your payment method on file.</li>
+                      <li><strong>How to cancel:</strong> You may cancel at any time by emailing <a href="mailto:support@ccwassistance.org" class="text-green-700 underline">support@ccwassistance.org</a>. Cancellation takes effect at the end of your current billing period.</li>
+                      <li><strong>No obligation:</strong> This subscription is entirely optional and is not required to enroll in the course.</li>
+                    </ul>
+                  </div>
                 </div>
+              </div>
+            </div>
+
+            <!-- ROSCA Required: Separate express consent for subscription -->
+            <div id="subscription-consent" class="hidden bg-white rounded-xl border-2 border-amber-300 p-6">
+              <div class="flex gap-3">
+                <input type="checkbox" id="agree-subscription" name="agree_subscription" class="w-5 h-5 text-green-600 border-gray-300 rounded focus:ring-green-500 cursor-pointer mt-0.5">
+                <label for="agree-subscription" class="text-sm text-gray-700 cursor-pointer">
+                  <strong>I authorize the recurring subscription charge.</strong> I understand that by checking this box, I am enrolling in the Advanced Defensive Tactics Module subscription at <strong>$39.99 per month</strong>, which will be billed automatically each month until I cancel. I may cancel at any time by emailing support@ccwassistance.org. This is a separate, optional service from the one-time course purchase.
+                </label>
               </div>
             </div>
 
@@ -244,9 +265,9 @@
               <div id="bump-advanced-line" class="hidden justify-between items-start">
                 <div>
                   <p class="font-medium">Advanced Defensive Tactics Module</p>
-                  <p class="text-sm text-gray-500">One-time</p>
+                  <p class="text-sm text-gray-500">Monthly subscription</p>
                 </div>
-                <p class="font-semibold">$39.00</p>
+                <p class="font-semibold">$39.99/mo</p>
               </div>
 
               <div id="bump-coaching-line" class="hidden justify-between items-start">
@@ -271,6 +292,12 @@
                 <span class="text-gray-500">Subtotal</span>
                 <span class="font-medium" id="subtotal">$95.00</span>
               </div>
+              <div id="monthly-note" class="hidden">
+                <div class="flex justify-between text-sm">
+                  <span class="text-gray-500">+ Monthly subscription</span>
+                  <span class="text-gray-500">$39.99/mo</span>
+                </div>
+              </div>
               <div class="flex justify-between text-lg font-bold border-t border-gray-100 pt-2">
                 <span>Due Today</span>
                 <span id="total">$95.00</span>
@@ -280,6 +307,14 @@
             <!-- Billing descriptor notice -->
             <div class="mt-4 bg-gray-50 rounded-lg p-3">
               <p class="text-xs text-gray-600"><strong>Billing Descriptor:</strong> This charge will appear on your credit card or bank statement as <strong>"CCWASSISTANCE.ORG"</strong>.</p>
+            </div>
+
+            <!-- Subscription disclosure in summary (ROSCA) -->
+            <div id="summary-subscription-terms" class="hidden mt-4 pt-4 border-t border-gray-100">
+              <p class="text-xs font-semibold text-amber-700 mb-1">Subscription Notice:</p>
+              <p class="text-xs text-amber-700 leading-relaxed">
+                The Advanced Defensive Tactics Module is a <strong>recurring monthly subscription at $39.99/month</strong>. It will auto-renew each month until cancelled. Cancel anytime by emailing support@ccwassistance.org.
+              </p>
             </div>
 
             <!-- Security badges -->
@@ -297,7 +332,7 @@
             <!-- Disclaimer in summary -->
             <div class="mt-6 pt-4 border-t border-gray-100">
               <p class="text-xs text-gray-400 leading-relaxed">
-                ccwassistance.org is a service of CHAD INDUSTRIES LLC. This is a one-time $95 purchase for lifetime access to a digital educational course &mdash; not a subscription. The course is provided for educational purposes only and is not legal advice.
+                ccwassistance.org is a service of CHAD INDUSTRIES LLC. The course is a one-time $95 purchase for lifetime access; the optional Advanced Defensive Tactics Module is a separate recurring monthly subscription, disclosed above. The course is provided for educational purposes only and is not legal advice.
               </p>
             </div>
           </div>
@@ -327,12 +362,17 @@
 
   <script src="/js/main.js"></script>
   <script>
-    // Pricing (all one-time)
-    const BASE = 95.00, ADVANCED = 39.00, COACHING = 55.00, BUNDLE = 69.00;
+    // Pricing: course + coaching + bundle are one-time; Advanced module is a monthly subscription
+    const BASE = 95.00, ADVANCED = 39.99, COACHING = 55.00, BUNDLE = 69.00;
     const subtotalEl = document.getElementById('subtotal');
     const totalEl = document.getElementById('total');
-    const bumps = [
-      { cb: document.getElementById('bump-advanced'), line: document.getElementById('bump-advanced-line'), amt: ADVANCED },
+    const monthlyNote = document.getElementById('monthly-note');
+    const subscriptionConsent = document.getElementById('subscription-consent');
+    const agreeSubscription = document.getElementById('agree-subscription');
+    const summarySubscriptionTerms = document.getElementById('summary-subscription-terms');
+    const advCb = document.getElementById('bump-advanced');
+    const advLine = document.getElementById('bump-advanced-line');
+    const oneTimeBumps = [
       { cb: document.getElementById('bump-coaching'), line: document.getElementById('bump-coaching-line'), amt: COACHING },
       { cb: document.getElementById('bump-bundle'),   line: document.getElementById('bump-bundle-line'),   amt: BUNDLE },
     ];
@@ -342,17 +382,35 @@
       else { el.classList.add('hidden'); el.classList.remove('flex'); }
     }
     function recalc() {
-      let total = BASE;
-      bumps.forEach(b => { if (b.cb.checked) total += b.amt; show(b.line, b.cb.checked); });
-      subtotalEl.textContent = money(total);
-      totalEl.textContent = money(total);
+      let oneTime = BASE;
+      oneTimeBumps.forEach(b => { if (b.cb.checked) oneTime += b.amt; show(b.line, b.cb.checked); });
+      const hasSub = advCb.checked;
+      const dueToday = oneTime + (hasSub ? ADVANCED : 0);
+      show(advLine, hasSub);
+      if (hasSub) {
+        monthlyNote.classList.remove('hidden');
+        subscriptionConsent.classList.remove('hidden');
+        summarySubscriptionTerms.classList.remove('hidden');
+      } else {
+        monthlyNote.classList.add('hidden');
+        subscriptionConsent.classList.add('hidden');
+        summarySubscriptionTerms.classList.add('hidden');
+        agreeSubscription.checked = false;
+      }
+      subtotalEl.textContent = money(oneTime);
+      totalEl.textContent = money(dueToday);
     }
-    bumps.forEach(b => b.cb.addEventListener('change', recalc));
+    [advCb, ...oneTimeBumps.map(b => b.cb)].forEach(el => el.addEventListener('change', recalc));
     recalc();
 
     // Placeholder payment behavior
     document.getElementById('checkout-form').addEventListener('submit', function(e) {
       e.preventDefault();
+      if (advCb.checked && !agreeSubscription.checked) {
+        alert('Please confirm your subscription authorization. You must check the subscription consent box to enroll in the Advanced Defensive Tactics Module.');
+        agreeSubscription.focus();
+        return;
+      }
       alert('Payment processing will be integrated here. Connect your payment processor (Stripe, etc.) to complete this functionality.');
     });
   </script>
