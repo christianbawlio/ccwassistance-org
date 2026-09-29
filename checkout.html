@@ -180,6 +180,26 @@
               </div>
             </div>
 
+            <!-- Optional Add-on: Legal Guide ($39 one-time) -->
+            <div class="bg-gradient-to-r from-rose-50 to-pink-50 rounded-xl border-2 border-rose-200 p-6 relative overflow-hidden">
+              <div class="absolute top-0 right-0 bg-rose-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">OPTIONAL ADD-ON</div>
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 pt-1">
+                  <input type="checkbox" id="bump-guide" name="bump_guide" class="w-5 h-5 text-rose-600 border-gray-300 rounded focus:ring-rose-500 cursor-pointer">
+                </div>
+                <div>
+                  <label for="bump-guide" class="cursor-pointer">
+                    <h3 class="font-bold text-lg mb-1">Add Concealed Carry Legal Guide</h3>
+                    <p class="text-gray-600 text-sm mb-3">Downloadable digital guide covering concealed carry laws, state reciprocity, and safe-carry best practices you can keep for reference.</p>
+                    <div class="flex items-baseline gap-2">
+                      <span class="text-2xl font-extrabold text-rose-600">$39.00</span>
+                      <span class="text-gray-500">one-time</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </div>
+
             <!-- Payment -->
             <div class="bg-white rounded-xl border border-gray-200 p-6">
               <div class="flex items-center justify-between mb-4">
@@ -285,6 +305,14 @@
                 </div>
                 <p class="font-semibold">$69.00</p>
               </div>
+
+              <div id="bump-guide-line" class="hidden justify-between items-start">
+                <div>
+                  <p class="font-medium">Concealed Carry Legal Guide</p>
+                  <p class="text-sm text-gray-500">One-time</p>
+                </div>
+                <p class="font-semibold">$39.00</p>
+              </div>
             </div>
 
             <div class="border-t border-gray-100 pt-4 space-y-2">
@@ -363,7 +391,7 @@
   <script src="/js/main.js"></script>
   <script>
     // Pricing: course + coaching + bundle are one-time; Advanced module is a monthly subscription
-    const BASE = 95.00, ADVANCED = 39.99, COACHING = 55.00, BUNDLE = 69.00;
+    const BASE = 95.00, ADVANCED = 39.99, GUIDE = 39.00, COACHING = 55.00, BUNDLE = 69.00;
     const subtotalEl = document.getElementById('subtotal');
     const totalEl = document.getElementById('total');
     const monthlyNote = document.getElementById('monthly-note');
@@ -373,6 +401,7 @@
     const advCb = document.getElementById('bump-advanced');
     const advLine = document.getElementById('bump-advanced-line');
     const oneTimeBumps = [
+      { cb: document.getElementById('bump-guide'),    line: document.getElementById('bump-guide-line'),    amt: GUIDE },
       { cb: document.getElementById('bump-coaching'), line: document.getElementById('bump-coaching-line'), amt: COACHING },
       { cb: document.getElementById('bump-bundle'),   line: document.getElementById('bump-bundle-line'),   amt: BUNDLE },
     ];
